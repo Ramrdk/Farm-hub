@@ -1,0 +1,82 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %} 
+<!DOCTYPE html>
+
+<html lang="en">
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcrumb Area Start ##### -->
+    <div class="breadcrumb-area">
+        <!-- Top Breadcrumb Area -->
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url({% static 'img/bg-img/24.jpg '%});">
+            <h2>Profile</h2>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                       <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fa fa-home"></i> Home</a></li>
+ <li class="breadcrumb-item"><a href="{% url 'logout' %}"><i class="fa fa-unlock"></i> Logout</a></li>                            <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ##### Testimonial Area Start ##### -->
+    <section class="testimonial-area section-padding-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="testimonials-slides owl-carousel">
+
+                        <!-- Single Testimonial Slide -->
+
+                        <!-- Single Testimonial Slide -->
+                        
+
+                        <!-- Single Testimonial Slide -->
+                        <div class="single-testimonial-slide">
+                            <div class="row align-items-center">
+                               
+                                <div class="col-12 col-md-6">
+                                    <div class="testimonial-content">
+                                        <!-- Section Heading -->
+                                        <div class="section-heading">
+                                            <h2>PROFILE</h2>
+                                           <table>
+
+										   <tr><td> <p><b>Name </td><td>: </b></td><td>{{result.name}}</p></td></tr>
+											<tr><td><p><b>Address </td><td>:</b></td><td> {{result.address}}</p></td></tr>
+											<tr><td><p><b>Experience</td><td> :</b> </td><td> {{result.experience}}</p></td></tr>
+											<tr><td><p><b>Designation</td><td> :</b> </td><td> {{result.designation}}</p></td></tr>
+											<tr><td><p><b>Password </td><td>:</b></td><td>  {{result.password}}</p></td></tr>
+											<tr><td><p><b>Phone </td><td>:</b> </td><td> {{result.phone}}</p></td></tr>
+											
+											</table>
+			            <a href="{% url 'updateworkerprofile' id=result.id %}" class="btn btn-success">update</a>
+                                        </div>
+                                         
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Testimonial Area End ##### -->
+
+    
+
+	{% include 'footer.html' %}
+</body>
+
+</html>
+{% endblock %}

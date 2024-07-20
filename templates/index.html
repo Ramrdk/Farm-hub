@@ -1,0 +1,124 @@
+{% load static %} {% block content %} {% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farming Products and Equipment</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> </head>
+
+<body>
+    <!-- ##### Header Area End ##### -->
+    
+    
+    <!-- ##### Product Categories Navigation End ##### -->
+    <!-- ##### Banner Area Start ##### -->
+    <div class="banner-area section-padding-100-0 bg-img" style="background-image: url({% static 'img/bg-img/banner.png' %});">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="banner-content text-center">
+                        <h2>Welcome to Our Farming Products Store</h2>
+                        <p>Your one-stop shop for quality farming products and equipment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Banner Area End ##### -->
+    
+    
+    <!-- ##### Products Area Start ##### -->
+    <div class="products-area ">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Section Heading -->
+                    <div class="section-heading text-center">
+                        <h2>Our Products</h2>
+                        <p>Check out some of our featured products.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Single Product Area -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-product-area mb-100">
+                        <div class="product-img"> <img src="{% static 'img/bg-img/prod1.jpg' %}" alt=""> </div>
+                        <div class="product-info text-center">
+                            <a href="#">
+                                <h6>Organic Seeds</h6> </a>
+                            <p>$20.00</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Product Area -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-product-area mb-100">
+                        <div class="product-img"> <img src="{% static 'img/bg-img/prod2.jpg' %}" alt=""> </div>
+                        <div class="product-info text-center">
+                            <a href="#">
+                                <h6>Fertilizer Pack</h6> </a>
+                            <p>$15.00</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Product Area -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-product-area mb-100">
+                        <div class="product-img"> <img src="{% static 'img/bg-img/prod3.jpg' %}" alt=""> </div>
+                        <div class="product-info text-center">
+                            <a href="#">
+                                <h6>Tractor</h6> </a>
+                            <p>$5000.00</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Product Area -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-product-area mb-100">
+                        <div class="product-img"> <img src="{% static 'img/bg-img/prod4.jpg' %}" alt=""> </div>
+                        <div class="product-info text-center">
+                            <a href="#">
+                                <h6>Sprinkler System</h6> </a>
+                            <p>$200.00</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Product Area -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-product-area mb-100">
+                        <div class="product-img"> <img src="{% static 'img/bg-img/prod5.jpg' %}" alt=""> </div>
+                        <div class="product-info text-center">
+                            <a href="#">
+                                <h6>Pesticide Spray</h6> </a>
+                            <p>$25.00</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Product Area -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-product-area mb-100">
+                        <div class="product-img"> <img src="{% static 'img/bg-img/prod6.jpg' %}" alt=""> </div>
+                        <div class="product-info text-center">
+                            <a href="#">
+                                <h6>Garden Tools Set</h6> </a>
+                            <p>$30.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Products Area End ##### -->
+
+
+    
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area section-padding-100-0">
+            
+    </footer>
+    <!-- ##### Footer Area End ##### -->{% include 'footer.html' %} </body>
+
+</html> {% endblock %} ```

@@ -1,0 +1,162 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %} 
+<!DOCTYPE html>
+<html lang="en">
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcrumb Area Start ##### -->
+    <div class="breadcrumb-area">
+        <!-- Top Breadcrumb Area -->
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url({% static 'img/bg-img/24.jpg '%});">
+            <h2>Shop</h2>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                      
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Breadcrumb Area End ##### -->
+
+    <!-- ##### Shop Area Start ##### -->
+    <section class="shop-page section-padding-0-100">
+        <div class="container">
+            <div class="row">
+                <!-- Shop Sorting Data -->
+                <div class="col-12">
+                    <div class="shop-sorting-data d-flex flex-wrap align-items-center justify-content-between">
+                        <!-- Shop Page Count -->
+                        <div class="shop-page-count">
+                            
+                        </div>
+                        <!-- Search by Terms -->
+                        <div class="search_by_terms">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Sidebar Area -->
+                
+                <!-- All Products Area -->
+                <div class="col-12 col-md-12 col-lg-12">
+                    <div class="shop-products-area">
+                        <div class="row">
+			
+						{% for i in result %}
+						
+						
+						
+						   <div class="col-12 col-sm-6 col-lg-4">
+                                <div class="single-product-area mb-50">
+                                    <!-- Product Image -->
+                                    <div class="">
+                                        <img src="../media/{{i.image}}">
+                                        <!-- Product Tag -->
+                                        <div class="product-tag">
+                                        </div>
+                                        <div class="product-meta d-flex">
+                                        </div>
+                                    </div>
+                                    <!-- Product Info -->
+                                    <div class="product-info mt-15 text-center">
+                                        <a href="shop-details.html">
+                                            <p>{{i.name}}</p>
+                                        </a>
+                                        <h6>{{i.prize}}</h6>
+										 Quantity <h6>{{i.quantity}}</h6>
+
+			            <a href="{% url 'purchase' id=i.id %}" class="btn btn-success">Purchase</a>
+
+                                    </div>
+                                </div>
+                            </div>
+						
+						
+						
+						
+					 {% endfor %}
+					
+
+
+</div>
+<br><br>
+<div class="col-12 col-md-4 col-lg-3">
+                    <div class="shop-sidebar-area">
+
+                        <!-- Shop Widget -->
+                        
+
+                        <!-- Shop Widget -->
+                        <div class="shop-widget catagory mb-50">
+                            <h4 class="widget-title"></h4>
+                            <div class="widget-desc">
+                                <!-- Single Checkbox -->
+                              
+                                <!-- Single Checkbox -->
+                              
+                                <!-- Single Checkbox -->
+                                
+                                <!-- Single Checkbox -->
+                               
+                                <!-- Single Checkbox -->
+                            
+                                <!-- Single Checkbox -->
+                               
+                            </div>
+                        </div>
+
+                        <!-- Shop Widget -->
+                        
+
+                        <!-- Shop Widget -->
+                        <div class="shop-widget best-seller mb-50">
+                            <h4 class="widget-title"></h4>
+                            <div class="widget-desc">
+
+                                <!-- Single Best Seller Products -->
+                               
+
+                                <!-- Single Best Seller Products -->
+                               
+
+                                <!-- Single Best Seller Products -->
+                                <div class="single-best-seller-product d-flex align-items-center">
+                                    <div class="product-thumbnail">
+                                    </div>
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                        <!-- Pagination -->
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Shop Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+   
+
+   {% include 'footer.html' %}
+</body>
+
+</html>
+{% endblock %}

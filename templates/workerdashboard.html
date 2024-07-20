@@ -1,0 +1,54 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %} 
+<!DOCTYPE html>
+<html lang="en">
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcrumb Area Start ##### -->
+    <div class="breadcrumb-area">
+        <!-- Top Breadcrumb Area -->
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url({% static 'img/bg-img/24.jpg '%});">
+            <h2>Worker</h2>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>			<br><br>			<br><br>
+    <!-- ##### Breadcrumb Area End ##### -->
+
+    <!-- ##### Shop Area Start ##### -->
+    <section class="shop-page section-padding-0-100">
+        <div class="container">
+            <div class="row">
+			<br><br>
+                <!-- Shop Sorting Data -->
+                <div class="col-12">
+                   
+							
+							<a href='workerprofile' class='btn btn-success' style="width:200px; height:70px;"><br>PROFILE</a>
+							<a href='viewproducts' class='btn btn-success'  style="width:200px; height:70px;"><br>VIEW PRODUCT</a>
+							<a href="{% url 'viewworkerrequest' %}" class='btn btn-success'  style="width:200px; height:70px;"><br>VIEW REQUEST</a>
+							<a href=" {% url 'viewworkernews' %}" class='btn btn-success'  style="width:200px; height:70px;"><br>VIEW NEWS</a>
+							<a href="{% url 'viewworkermachinerys' %}" class='btn btn-success'  style="width:200px; height:70px;"><br>VIEW MACHINERY</a>
+							
+                     <br><br><br>
+                </div>
+            </div>
+			</div></div>
+
+   {% include 'footer.html' %}
+
+          
+
+</body>
+
+</html>
+{% endblock %}

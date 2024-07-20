@@ -1,0 +1,59 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %} 
+<!DOCTYPE html>
+<html lang="en">
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcrumb Area Start ##### -->
+    <div class="breadcrumb-area">
+        <!-- Top Breadcrumb Area -->
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url({% static 'img/bg-img/24.jpg '%});">
+            <h2>Shop</h2>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Breadcrumb Area End ##### -->
+
+    <!-- ##### Shop Area Start ##### -->
+    <section class="shop-page section-padding-0-100">
+        <div class="container">
+            <div class="row">
+                <!-- Shop Sorting Data -->
+                <div class="col-12">
+                   
+							
+							<a href='addproduct' class='btn btn-success' style="width:200px; height:70px;"><br>ADD PRODUCT</a>
+							<a href="{% url 'purchaseview' %}" class='btn btn-success' style="width:200px; height:70px;"><br>VIEW PURCHASE</a>
+							<a href='viewworkersss' class='btn btn-success' style="width:200px; height:70px;"><br>VIEW WORKERS</a>
+							<a href="{% url 'viewnews' %}" class='btn btn-success' style="width:200px; height:70px;"><br>VIEW NEWS</a>
+							<a href="{% url 'viewadminproductss' %}" class='btn btn-success' style="width:200px; height:70px;"><br>VIEW ADMIN PRODUCTS</a><br><br><br><br>
+							<a href="{% url 'viewsellermachinerys' %}" class='btn btn-success' style="width:200px; height:70px;"><br>VIEW MACHINERYS</a>
+
+							
+<br><br>
+<br><br>
+                     
+                </div>
+            </div>
+
+          </div></div>
+
+          
+
+   {% include 'footer.html' %}
+</body>
+
+</html>
+{% endblock %}

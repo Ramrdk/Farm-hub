@@ -1,0 +1,92 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %} 
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcrumb Area Start ##### -->
+    <div class="breadcrumb-area">
+        <!-- Top Breadcrumb Area -->
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url({% static 'img/bg-img/24.jpg' %});">
+            <h2>NEWS</h2>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">News</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Breadcrumb Area End ##### -->
+
+    <!-- ##### Blog Area Start ##### -->
+    <section class="alazea-blog-area mb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-12">
+
+                    <div class="row">
+				{% for i in res %}
+
+                        <!-- Single Blog Post Area -->
+                        <div class="col-12 col-lg-6">
+                            <div class="single-blog-post mb-50">
+                                <div class="post-thumbnail mb-30">
+                                    <a href=""><img src="../media/{{i.image}}"></a>
+                                </div>
+                                <div class="post-content">
+                                    <a href="" class="post-title">
+                                        <h5>{{i.heading}}</h5>
+                                    </a>
+                                    <div class="post-meta">
+                                        <a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i> {{i.date}}</a>
+                                    </div>
+                                    <p class="post-excerpt">
+{{i.description}}
+</p>                                </div>
+                            </div>
+                        </div>
+				{% endfor %}
+
+                        <!-- Single Blog Post Area -->
+                    
+
+                        <!-- Single Blog Post Area -->
+                     
+
+                        <!-- Single Blog Post Area -->
+                   
+
+                        <!-- Single Blog Post Area -->
+               
+
+                        <!-- Single Blog Post Area -->
+                
+				</div>
+
+				<br>
+
+                    <div class="row">
+                        <div class="col-12">
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </section>
+
+
+   {% include 'footer.html' %}
+</body>
+
+</html>
+{% endblock %}

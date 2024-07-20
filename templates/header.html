@@ -1,0 +1,255 @@
+{% load static %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Alazea - Gardening &amp; Landscaping HTML Template</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+
+    <!-- Preloader -->
+   
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="whb-header whb-sticky-shadow whb-scroll-slide whb-sticky-clone whb-hide-on-scroll">
+
+        <!-- ##### Track Order and Login Area Start ##### -->
+    <div class="top-bar d-flex justify-content-end align-items-center">
+        <div class="track-order">
+            <form action="/track-order" method="POST" class="track-order-box">
+                <!-- added by Gopal-->
+        
+ {% csrf_token %}
+                <input type="text" name="order_id" placeholder="Enter Order ID">
+                <button type="submit" class="btn alazea-btn">Track Order</button>
+            </form>
+        </div>
+        <div class="cart-login"> <a href="#" class="btn alazea-btn">Cart</a> <a href="#" class="btn alazea-btn">Missed Call To Order: 1800-3000-2434</a> </div>
+    </div>
+    <!-- ##### Track Order and Login Area End ##### -->
+
+        <!-- ***** Top Header Area ***** -->
+        <div class="top-header-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="top-header-content d-flex align-items-center justify-content-between">
+                            <!-- Top Header Content -->
+                           
+
+                            <!-- Top Header Content -->
+                            <div class="top-header-meta d-flex">
+                                <!-- Language Dropdown -->
+                                
+                                <!-- Login -->
+                                
+                                <!-- Cart -->
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ***** Navbar Area ***** -->
+        
+        
+        <div class="alazea-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="alazeaNav">
+
+                        <!-- Nav Brand -->
+                        <a href="index.html" class="nav-brand"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            
+
+                            <!-- Navbar Start -->
+                            <div class="classynav">
+                                
+                                <ul>
+									    
+												
+									{% if request.session.cid %}
+									
+											                     <li><a href="{% url 'products' %}">Product</a>
+                           
+										
+                               								<li><a href="{% url 'logout' %}">LogOut</a>
+
+											
+											{% elif request.session.admin %}
+												                                              
+										<li><a href="{% url 'addcategory' %}">Add Category</a>
+                               			<li><a href="{% url 'addnews' %}">Add News</a>
+										
+                               		
+										<li><a href="#">Add</a>
+										<ul class="dropdown">
+                                            <li><a href="{% url 'adminproduct' %}">Add Product</a></li>
+                                            <li><a href="{% url 'adminmachinery'%}">Add Machinery</a></li>
+                                             
+                                                </ul>  
+
+										<li><a href="#">View Details</a>
+									 
+													<ul class="dropdown">
+                                            <li><a href="{% url 'viewworkers' %}">View Workers</a></li>
+                                            <li><a href="{% url 'viewfarmers' %}">View Sellers</a></li>
+                                             <li><a href="{% url 'viewcustomers' %}">View Customers</a></li>
+										  <li><a href="{% url 'pay' %}">View Purchase</a></li>
+
+                                                </ul>  
+                               			<li><a href="{% url 'logout' %}">LogOut</a>
+										
+										
+						{% elif request.session.sid %}
+
+										
+										 <li><a href="{% url 'homes' %}">Home</a>
+
+										
+                               			<li><a href="{% url 'logout' %}">LogOut</a>
+										
+										
+														
+						{% elif request.session.wid %}
+
+										
+										 <li><a href="{% url 'homess' %}">Home</a>
+
+										
+                               			<li><a href="{% url 'logout' %}">LogOut</a>
+										
+										
+										
+										
+											
+										
+										
+										
+										
+
+											{% else %}
+											         <li><a href="{% url 'homes' %}">Home</a></li>
+
+											<li><a href="#">Register</a>
+                                        <ul class="dropdown">
+                                            <li><a href="{% url 'customer' %}">Customer</a></li>
+                                            <li><a href="{% url 'sellernew' %}">Seller</a></li>
+                                             <li><a href="{% url 'workernew' %}">Worker</a></li>
+                                                </ul>
+                                            </li>
+											
+											<li><a href="{% url 'login' %}">Login</a>
+											
+											{% endif %}
+											
+                                           <!-- <li><a href="portfolio.html">Portfolio</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="portfolio.html">Portfolio</a></li>
+                                                    <li><a href="single-portfolio.html">Portfolio Details</a></li>
+                                            s    </ul>
+                                            </li>
+                                            <li><a href="blog.html">Blog</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="blog.html">Blog</a></li>
+                                                    <li><a href="single-post.html">Blog Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="shop.html">Shop</a></li>
+                                    <li><a href="portfolio.html">Portfolio</a></li>
+                                    <li><a href="contact.html">Contact</a></li>-->
+                                </ul>
+
+                                <!-- Search Icon -->
+                                <div id="searchIcon">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </div>
+
+                            </div>
+                            <!-- Navbar End -->
+                        </div>
+                    </nav>
+
+                    <!-- Search Form -->
+                    <div class="search-form">
+                        <form action="#" method="get">
+                            <input type="search" name="search" id="search" placeholder="Type keywords &amp; press enter...">
+                            <button type="submit" class="d-none"></button>
+                        </form>
+                        <!-- Close Icon -->
+                        <div class="closeIcon"><i class="fa fa-times" aria-hidden="true"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ##### Product Categories Navigation Start ##### -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light"> <a class="navbar-brand" href="#">Categories</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="seedsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                         Seeds                     </a>
+                    <div class="dropdown-menu" aria-labelledby="seedsDropdown">
+                    <a class="dropdown-item" href="#">Organic Seeds</a> <a class="dropdown-item" href="#">Hybrid Seeds</a> </div>
+                </li>
+                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="nutritionDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                         Crop Nutrition                     </a>
+                    <div class="dropdown-menu"
+                    aria-labelledby="nutritionDropdown"> <a class="dropdown-item" href="#">Fertilizers</a> <a class="dropdown-item" href="#">Soil Amendments</a> </div>
+                </li>
+                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="equipmentDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                         Farming Equipment                     </a>
+                    <div class="dropdown-menu"
+                    aria-labelledby="equipmentDropdown"> <a class="dropdown-item" href="#">Tractors</a> <a class="dropdown-item" href="#">Harvesters</a> </div>
+                </li>
+                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="irrigationDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                         Irrigation Systems                     </a>
+                    <div class="dropdown-menu"
+                    aria-labelledby="irrigationDropdown"> <a class="dropdown-item" href="#">Drip Irrigation</a> <a class="dropdown-item" href="#">Sprinkler Systems</a> </div>
+                </li>
+                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="pesticidesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                         Pesticides                     </a>
+                    <div class="dropdown-menu"
+                    aria-labelledby="pesticidesDropdown"> <a class="dropdown-item" href="#">Herbicides</a> <a class="dropdown-item" href="#">Insecticides</a> </div>
+                </li>
+                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="toolsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                         Tools & Accessories                     </a>
+                    <div class="dropdown-menu"
+                    aria-labelledby="toolsDropdown"> <a class="dropdown-item" href="#">Garden Tools</a> <a class="dropdown-item" href="#">Accessories</a> </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    </header>
+
+    
+	{% endblock %}

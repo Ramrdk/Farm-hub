@@ -1,0 +1,3 @@
+<br />
+<b>Warning</b>:  readfile(http://developerravi.com/practice/day2/qrmeravi24468.png): failed to open stream: HTTP request failed! HTTP/1.0 404 Not Found
+ in <b>C:\xampp\htdocs\QR-Scanner-Generator-master\download.php</b> on line <b>8</b><br />

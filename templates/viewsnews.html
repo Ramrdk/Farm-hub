@@ -1,21 +1,59 @@
 {% load static %}
 {% block content %}
-{% include 'header.html' %} 
-    <!-- ##### Header Area End ##### -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmzy News</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        .breadcrumb-area {
+            background: #f8f9fa;
+            padding: 50px 0;
+        }
+        .breadcrumb-area .top-breadcrumb-area {
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 80px 0;
+        }
+        .news-content {
+            padding: 50px 0;
+        }
+        .news-content img {
+            width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+        .news-item {
+            margin-bottom: 30px;
+        }
+        .news-item h3 {
+            color: #007bff;
+        }
+        .news-item p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
 
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
-        <!-- Top Breadcrumb Area -->
         <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url({% static 'img/bg-img/24.jpg' %});">
-            <h2>NEWS</h2>
+            <h2>Farmzy News</h2>
         </div>
-
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">News</li>
                         </ol>
                     </nav>
@@ -23,70 +61,60 @@
             </div>
         </div>
     </div>
-    <!-- ##### Breadcrumb Area End ##### -->
+<!-- ##### Breadcrumb Area End ##### -->
 
-    <!-- ##### Blog Area Start ##### -->
-    <section class="alazea-blog-area mb-100">
+    <!-- ##### News Content Area Start ##### -->
+    <section class="news-content">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-12">
-
-                    <div class="row">
-				{% for i in res %}
-
-                        <!-- Single Blog Post Area -->
-                        <div class="col-12 col-lg-6">
-                            <div class="single-blog-post mb-50">
-                                <div class="post-thumbnail mb-30">
-                                    <a href=""><img src="../media/{{i.image}}"></a>
-                                </div>
-                                <div class="post-content">
-                                    <a href="" class="post-title">
-                                        <h5>{{i.heading}}</h5>
-                                    </a>
-                                    <div class="post-meta">
-                                        <a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i> {{i.date}}</a>
-                                    </div>
-                                    <p class="post-excerpt">
-{{i.description}}
-</p>                                </div>
-                            </div>
-                        </div>
-				{% endfor %}
-
-                        <!-- Single Blog Post Area -->
+                <div class="col-12">
+                    <h2>Exciting Updates from Farm@HUB</h2>
                     
+                    <div class="news-item">
+                        <div class="row">
+                            {% for i in res %}
+            
+                                    <!-- Single Blog Post Area -->
+                                    <div class="col-12 col-lg-6">
+                                        <div class="single-blog-post mb-50">
+                                            <div class="post-thumbnail mb-30">
+                                              
+                                            </div>
+                                        
+                                                    <h3>{{i.heading}}</h5>
+                                                        <img src="../media/{{i.image}}">
+                                           
+                                                    <a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i> {{i.date}}</a>
+                                               
+                                               
+            <p>{{i.description}}</p>
+                                      </div>
+                                        </div>
+                                    </div>
+                            {% endfor %}
+                        <h3>Farmzy Wins Prestigious Agricultural Innovation Award</h3>
+                        <img src="https://tse1.mm.bing.net/th/id/OIP.lKctWT1XvzPhzOX7_bhBWwHaEm?rs=1&pid=ImgDetMain" alt="Farmzy Agricultural Award">
+                        <p>Farmzy is thrilled to announce that we have won the prestigious Agricultural Innovation Award for our groundbreaking solutions in modern farming. This award recognizes our commitment to enhancing agricultural efficiency and sustainability through advanced technology and innovation.</p>
+                    </div>
 
-                        <!-- Single Blog Post Area -->
-                     
+                    <div class="news-item">
+                        <h3>New Product Launch: Revolutionizing Crop Management</h3>
+                        <img src="https://www.cabi.org/wp-content/uploads/International-development/Centres/ICM-Diagram-FINAL.jpg" alt="New Product Launch">
+                        <p>We are excited to introduce our latest product designed to revolutionize crop management. Our new solution offers state-of-the-art features that improve yield prediction, pest management, and resource allocation, helping farmers achieve greater productivity and sustainability.</p>
+                    </div>
 
-                        <!-- Single Blog Post Area -->
-                   
-
-                        <!-- Single Blog Post Area -->
-               
-
-                        <!-- Single Blog Post Area -->
-                
-				</div>
-
-				<br>
-
-                    <div class="row">
-                        <div class="col-12">
-                            
-                        </div>
+                    <div class="news-item">
+                        <h3>Farmzy Expands Operations: Now Serving More Regions</h3>
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.LsTvNSHCXMvvKdTIsO9HGAHaEK?rs=1&pid=ImgDetMain" alt="Farmzy Expansion">
+                        <p>In response to growing demand, Farmzy is expanding its operations to serve additional regions. Our expanded reach means that more farmers will have access to our innovative solutions and expert support, furthering our mission to drive agricultural excellence.</p>
                     </div>
                 </div>
-                
-                
             </div>
         </div>
     </section>
+    <!-- ##### News Content Area End ##### -->
 
-
-   {% include 'footer.html' %}
+    {% include 'footer.html' %}
 </body>
-
 </html>
 {% endblock %}

@@ -376,6 +376,7 @@ img {
 
 /* :: 4.0 Header Area CSS */
 
+
 .header-area {
     position: absolute;
     width: 100%;
@@ -398,11 +399,13 @@ img {
         }
         .top-header-content {
             position: relative;
+            
             z-index: 1;
             height: 41px;
             .top-header-meta {
                 a {
                     display: inline-block;
+                    justify-content: space-between;
                     font-size: 12px;
                     font-weight: 400;
                     color: $white-color;
@@ -433,6 +436,7 @@ img {
                         z-index: 2;
                         position: absolute;
                     }
+                    
                     .btn {
                         padding: 0;
                         background-color: transparent;
@@ -3157,5 +3161,6 @@ img {
         margin-bottom: 0;
     }
 }
+
 
 /* ======= The End ======= */

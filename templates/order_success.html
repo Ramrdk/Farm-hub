@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %} {% load custom_filters %} {% include 'header.html' %}
+<head>
+    <script>
+        function redirectToSuccessPage() {
+            // Redirect to the success page
+            window.location.href = "{% url 'confirm_payment' %}";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Assuming the QR code scan and payment button click trigger this function
+            const paymentButton = document.getElementById("paymentButton");
+
+            if (paymentButton) {
+                paymentButton.addEventListener("click", function() {
+                    // Add your payment handling code here
+
+                    // Redirect after payment is processed
+                    redirectToSuccessPage();
+                });
+            }
+        });
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Order Success</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Order Confirmed</h2>
+                <p>Thank you for your order!</p>
+                <p>Order ID: {{ order.order_id }}</p>
+                {% if order.payment_method == 'UPI' and order.qr_code %}
+                    <p>Scan the QR code below to complete the payment:</p>
+                    <img src="{{ order.qr_code.url }}" alt="QR Code for UPI Payment" />
+                {% elif order.payment_method == 'Card' %}
+                    <p>Please complete your payment using your card.</p>
+                    <a href ="{% url 'purchase' %}">go to payment</a>
+                    <!-- Add additional instructions or links to payment gateway if needed -->
+                {% elif order.payment_method == 'Cash' %}
+                    <p>Your order will be processed and delivered. Please keep the cash ready for payment on delivery.</p>
+                {% else %}
+                    <p>Please follow the instructions provided for payment.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+{% include 'footer.html' %}
+</html>

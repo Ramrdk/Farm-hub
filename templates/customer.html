@@ -1,102 +1,69 @@
-{% load static %}
-{% block content %}
-{% include 'header.html' %} 
-    <!-- ##### Breadcrumb Area Start ##### -->
-    <div class="breadcrumb-area">
-        <!-- Top Breadcrumb Area -->
-        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url({% static 'img/bg-img/24.jpg' %});">
-            <h2> Customer Registration</h2>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                   
-                </div>
+{% load static %} {% block content %} {% include 'header.html' %} <!-- ##### Breadcrumb Area Start ##### --> 
+<div class="breadcrumb-area">
+   <!-- Top Breadcrumb Area --> 
+   <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url({% static 'img/bg-img/24.jpg' %});">
+      <h2>Customer Registration</h2>
+   </div>
+   <div class="container">
+      <div class="row">
+         <div class="col-12">
+            <!-- Optionally add breadcrumb navigation here --> 
+         </div>
+      </div>
+   </div>
+</div>
+<!-- ##### Breadcrumb Area End ##### --> <!-- ##### Registration Area Start ##### --> 
+<section class="registration-area py-5">
+   <div class="container">
+      <div class="row align-items-center justify-content-between">
+         <div class="col-12 col-lg-7">
+            <!-- Section Heading --> 
+            <div class="section-heading mb-4">
+               <h3>Create Your Account</h3>
+               <p>Fill in the details below to register. All fields are required.</p>
             </div>
-        </div>
-    </div>
-    <!-- ##### Breadcrumb Area End ##### -->
-
-
-    <!-- ##### Contact Area Start ##### -->
-    <section class="contact-area">
-        <div class="container">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-12 col-lg-5">
-                    <!-- Section Heading -->
-                    <div class="section-heading">
-                      
-                    </div>
-                    <!-- Contact Form Area -->
-                    <div class="contact-form-area mb-100">
-						
-					
-                        <form action="customeraddnew" onsubmit ="return validateForm()" method="post" >
-						{% csrf_token %}
-				
-                            <div class="row">
-							
-                                <div class="col-12 col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" id="fname" required class="form-control" name="name" placeholder="Your Name">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="form-group">
-                                        <input type="email" required class="form-control" name="email" placeholder="Your Email">
-                                    </div>
-                                </div>
-                               <div class="col-12">
-                                    <div class="form-group">
-                                        <textarea class="form-control" required name="address" name="address" cols="30" rows="10" placeholder="address"></textarea>
-                                    </div>
-                                </div>
-							   <div class="col-12 col-md-6">
-                                    <div class="form-group">
-                                        <input type="password" required class="form-control" pattern="[0-9]{4}" title="enter 4 digits" name="password" placeholder="Your password">
-                                    </div>
-                                </div>
-                               
-							   <div class="col-12 col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" required class="form-control" name="phone" required pattern="[6789][0-9]{9}" title="enter 10 digits" placeholder="Your phonenumber">
-                                    </div>
-                                </div>
-                            
-                                <div class="col-12">
-                                    <button type="submit" class="btn alazea-btn mt-15">Register</button>
-                                </div>
-                            </div>
-                        </form>
-						
-                    </div>
-                </div>
-
-                
+            <!-- Registration Form Area --> 
+            <div class="registration-form-area">
+               <form id="registrationForm" action="{% url 'customeraddnew' %}" method="post">
+                  {% csrf_token %} 
+                  <div class="row">
+                     <div class="col-12 col-md-6">
+                        <div class="form-group"> <label for="fname">Full Name</label> <input type="text" id="fname" required class="form-control" name="name" placeholder="John Doe"> </div>
+                     </div>
+                     <div class="col-12 col-md-6">
+                        <div class="form-group"> <label for="email">Email Address</label> <input type="email" id="email" required class="form-control" name="email" placeholder="example@example.com"> </div>
+                     </div>
+                     <div class="col-12">
+                        <div class="form-group"> <label for="address">Address</label> <textarea class="form-control" id="address" required name="address" cols="30" rows="4" placeholder="123 Main St, Apt 4B, Springfield, IL"></textarea> </div>
+                     </div>
+                     <div class="col-12 col-md-6">
+                        <div class="form-group"> <label for="password">Password</label> <input type="password" id="password" required class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password must be at least 8 characters long and include one uppercase letter, one lowercase letter, and one number" name="password" placeholder="Your Password"> </div>
+                     </div>
+                     <div class="col-12 col-md-6">
+                        <div class="form-group"> <label for="phone">Phone Number</label> <input type="text" id="phone" required class="form-control" name="phone" pattern="[6789][0-9]{9}" title="Enter a valid 10-digit phone number" placeholder="9876543210"> </div>
+                     </div>
+                     <div class="col-12 col-md-6">
+                        <div class="form-group"> <label for="dob">Date of Birth</label> <input type="date" id="dob" required class="form-control" name="dob"> </div>
+                     </div>
+                     <div class="col-12 col-md-6">
+                        <div class="form-group">
+                           <label for="gender">Gender</label> 
+                           <select id="gender" name="gender" required class="form-control">
+                              <option value="" disabled selected>Select your gender</option>
+                              <option value="male">Male</option>
+                              <option value="female">Female</option>
+                              <option value="other">Other</option>
+                           </select>
+                        </div>
+                     </div>
+                     <div class="col-12">
+                        <div class="form-group"> <button type="submit" class="btn btn-primary mt-3">Register</button> </div>
+                     </div>
+                  </div>
+               </form>
             </div>
-		
-        </div>
-    </section>
-    <!-- ##### Contact Area End ##### -->
-<script>  
-function validateForm() {  
-    //collect form data in JavaScript variables  
-    var name1 = document.getElementById("fname").value;  
-      
-    //check empty first name field  
-    if(name1 == "") {  
-      document.getElementById("blankMsg").innerHTML = "**Fill the first name";  
-      return false;  
-	  }
- else {  
-      alert (" successfully Added");  
-    }  
- }  
-</script>  
-
-   {% include 'footer.html' %}
-</body>
-
-</html>
-{% endblock %}
+         </div>
+      </div>
+   </div>
+</section>
+<!-- ##### Registration Area End ##### --> <script> document.getElementById('registrationForm').addEventListener('submit', function(event) { event.preventDefault(); // Prevent the default form submission // Perform form validation if (validateForm()) { // Submit the form via AJAX var form = event.target; var formData = new FormData(form); fetch(form.action, { method: 'POST', body: formData, headers: { 'X-CSRFToken': formData.get('csrfmiddlewaretoken') // Include CSRF token } }) .then(response => response.json()) .then(data => { if (data.success) { window.location.href = "{% url 'login' %}"; // Redirect to the login page on success } else { alert(data.error); // Display error if registration fails } }) .catch(error => console.error('Error:', error)); } }); function validateForm() { var name1 = document.getElementById("fname").value; var email = document.getElementById("email").value; var address = document.getElementById("address").value; var password = document.getElementById("password").value; var phone = document.getElementById("phone").value; var dob = document.getElementById("dob").value; var gender = document.getElementById("gender").value; // Check for empty fields if (name1 === "" || email === "" || address === "" || password === "" || phone === "" || dob === "" || gender === "") { alert("All fields are required!"); return false; } // If validation passes return true; } </script> {% include 'footer.html' %} {% endblock %}

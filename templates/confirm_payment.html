@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm Payment</title>
+</head>
+<body>
+    <h2>Confirm Payment for Order ID: {{ order.order_id }}</h2>
+    <p>Total Amount: {{ order.total_amount }}</p>
+    <form action="{% url 'confirm_payment_action' order.order_id %}" method="post">
+        {% csrf_token %}
+        <button id ="paymentButton" type="submit">Confirm Payment</button>
+    </form>
+</body>
+</html>

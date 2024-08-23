@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% load custom_filters %}
+    {% include 'header.html' %}
+    <meta charset="UTF-8">
+    <title>Payment Successful</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+     
+        h2 {
+            color: #4caf50;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .order-info {
+            background-color: #f9f9f9;
+            border-left: 4px solid #4caf50;
+            padding: 10px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Payment Successful</h2>
+        <p>Thank you for your order!</p>
+        <div class="order-info">
+            <p><strong>Order ID:</strong> {{ order.order_id }}</p>
+            <p><strong>Status:</strong> {{ order.status }}</p>
+        </div>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

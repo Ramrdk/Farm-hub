@@ -51,7 +51,7 @@
                     <div class="shop-products-area">
                         <div class="row">
 			
-						{% for i in result %}
+						{% for product in all_products %}
 						
 						
 						
@@ -59,7 +59,7 @@
                                 <div class="single-product-area mb-50">
                                     <!-- Product Image -->
                                     <div class="">
-                                        <img src="../media/{{i.image}}">
+                                        <img src="{{product.image.url}}">
                                         <!-- Product Tag -->
                                         <div class="product-tag">
                                         </div>
@@ -68,20 +68,22 @@
                                     </div>
                                     <!-- Product Info -->
                                     <div class="product-info mt-15 text-center">
-                                        <a href="shop-details.html">
-                                            <p>{{i.name}}</p>
+                                        <a href="shop.html">
+                                            <p>{{product.name}}</p>
                                         </a>
-                                        <h6>{{i.prize}}</h6>
-										 Quantity <h6>{{i.quantity}}</h6>
+                                        <h6>{{product.prize}}</h6>
+									    Quantity
+                                          <h6>{{product.quantity}}</h6>
+                                          <form method="post" action="{% url 'add_to_cart' product.id %}">{% csrf_token %} <button type="submit">Add to Cart</button></form>
 
-			            <a href="{% url 'purchase' id=i.id %}" class="btn btn-success">Purchase</a>
+                                        
 
                                     </div>
                                 </div>
                             </div>
 						
 						
-						
+
 						
 					 {% endfor %}
 					

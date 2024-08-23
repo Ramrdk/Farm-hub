@@ -1,59 +1,263 @@
 {% load static %}
 {% block content %}
-{% include 'header.html' %} 
 <!DOCTYPE html>
 <html lang="en">
-    <!-- ##### Header Area End ##### -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        .breadcrumb-area {
+            background: #f8f9fa;
+            padding: 50px 0;
+        }
+        .breadcrumb-area .top-breadcrumb-area {
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 80px 0;
+        }
+        .breadcrumb-area .breadcrumb {
+            background: transparent;
+            padding: 0;
+            margin-bottom: 0;
+        }
+        .dashboard-card {
+            margin-bottom: 20px;
+        }
+        .dashboard-card .card-body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+        }
+        .dashboard-card .card-body a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
 
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
-        <!-- Top Breadcrumb Area -->
-        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url({% static 'img/bg-img/24.jpg '%});">
-            <h2>Shop</h2>
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url({% static 'img/bg-img/24.jpg' %});">
+            <h2>Dashboard</h2>
         </div>
-
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                            <!-- <li class="breadcrumb-item active" aria-current="page">Dashboard</li> -->
                         </ol>
                     </nav>
                 </div>
             </div>
         </div>
     </div>
-    <!-- ##### Breadcrumb Area End ##### -->
+   
+                {% if request.session.aid %}
+                <div class="row"> 
 
-    <!-- ##### Shop Area Start ##### -->
-    <section class="shop-page section-padding-0-100">
-        <div class="container">
-            <div class="row">
-                <!-- Shop Sorting Data -->
-                <div class="col-12">
-                   
-							
-							<a href='addproduct' class='btn btn-success' style="width:200px; height:70px;"><br>ADD PRODUCT</a>
-							<a href="{% url 'purchaseview' %}" class='btn btn-success' style="width:200px; height:70px;"><br>VIEW PURCHASE</a>
-							<a href='viewworkersss' class='btn btn-success' style="width:200px; height:70px;"><br>VIEW WORKERS</a>
-							<a href="{% url 'viewnews' %}" class='btn btn-success' style="width:200px; height:70px;"><br>VIEW NEWS</a>
-							<a href="{% url 'viewadminproductss' %}" class='btn btn-success' style="width:200px; height:70px;"><br>VIEW ADMIN PRODUCTS</a><br><br><br><br>
-							<a href="{% url 'viewsellermachinerys' %}" class='btn btn-success' style="width:200px; height:70px;"><br>VIEW MACHINERYS</a>
+                <div class="col-md-4">
+                    <div class="card dashboard-card bg-danger text-white">
+                        <div class="card-body text-center">
+                            
+                            <a href="{% url 'purchaseview' %}" >View Purchase</a>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                    
+                <div class="col-md-4">
+                    <div class="card dashboard-card bg-danger text-white">
+                        <div class="card-body text-center">
+                            
+                            <a href="{% url 'addnews' %}">Add News</a>  
+                            
+                        </div>
+                    </div>
+                </div>
 
-							
-<br><br>
-<br><br>
-                     
+                <div class="col-md-4">
+                    <div class="card dashboard-card bg-danger text-white">
+                        <div class="card-body text-center">
+                            
+                            <a href="{% url 'addcategory' %}">Add Category</a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card dashboard-card bg-danger text-white">
+                        <div class="card-body text-center">
+                            
+                            <a href="{% url 'adminproduct' %}">Add Product</a></li>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card dashboard-card bg-danger text-white">
+                        <div class="card-body text-center">
+                            
+                            <a href="{% url 'adminmachinery'%}">Add Machinery</a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card dashboard-card bg-danger text-white">
+                        <div class="card-body text-center">
+                            
+                            <a href="{% url 'viewworkers' %}">View Workers</a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card dashboard-card bg-danger text-white">
+                        <div class="card-body text-center">
+                            
+                            <a href="{% url 'viewfarmers' %}">View Sellers</a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card dashboard-card bg-danger text-white">
+                        <div class="card-body text-center">
+                            
+                            <a href="{% url 'viewcustomers' %}">View Customers</a>
+                            
+                        </div>
+                    </div>
+                </div>
+                </div>
+                {% endif %}
+
+                {% if request.session.sid %}
+                <div class="row"> 
+                <div class="col-md-4">
+                    <div class="card dashboard-card bg-danger text-white">
+                        <div class="card-body text-center">
+                            
+                                <a href="{% url 'selling_statistics' %}" >VIEW STATISTICS</a>
+                            
+                        </div>
+                    </div>
+                </div>
+             
+            
+                <div class="col-md-4">
+                    <div class="card dashboard-card bg-info text-white">
+                        <div class="card-body text-center">
+                            <a href='addproduct'>ADD PRODUCT</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card dashboard-card bg-warning text-white">
+                        <div class="card-body text-center">
+                            <a href="{% url 'viewadminproductss' %}" >VIEW SELLER PRODUCTS</a>
+                        </div>
+                    </div>
                 </div>
             </div>
+                {% endif %}
+     
+                <!-- Additional card for viewing workers -->
+                {% if request.session.wid %}
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card dashboard-card bg-dark text-white">
+                        <div class="card-body text-center">
+                            
+                            <a href='viewworkersss' >VIEW WORKERS</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card dashboard-card bg-danger text-white">
+                        <div class="card-body text-center">
+                            
+                            
+                <a href='workerprofile'><br>PROFILE</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card dashboard-card bg-info text-white">
+                        <div class="card-body text-center">
+                            
+                            
+                            <a href='viewproducts' ><br>VIEW PRODUCT</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card dashboard-card bg-warning text-white">
+                        <div class="card-body text-center">
+                            
+                            
+                            
+                <a href="{% url 'viewworkerrequest' %}"><br>VIEW REQUEST</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card dashboard-card bg-success text-white">
+                        <div class="card-body text-center">
+                            
+                            
+                            
+                            <a href="{% url 'viewworkermachinerys' %}"><br>VIEW MACHINERY</a>
+                        </div>
+                    </div>
+                </div>
 
-          </div></div>
+                </div>
+                
+               
+                
+                
+                
+                {% endif %}
 
-          
+                {% if request.session.cid %}
 
-   {% include 'footer.html' %}
+                <div class="col-md-4">
+                    <div class="card dashboard-card bg-danger text-white">
+                        <div class="card-body text-center">
+                            
+                            <a href="{% url 'purchaseview' %}" >View Purchases</a>
+                            
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+    <!-- ##### Dashboard Area End ##### -->
+
+    {% include 'footer.html' %}
+
+    <!-- Bootstrap JS and dependencies CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+   
 </body>
-
 </html>
 {% endblock %}

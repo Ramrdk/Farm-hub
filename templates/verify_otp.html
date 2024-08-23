@@ -1,0 +1,29 @@
+{% include 'header.html' %} 
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verify OTP</title>
+</head>
+<body>
+    <div class="container height-100 d-flex justify-content-center align-items-center"></div>
+    <div class="position-relative">
+        <div class="card p-2 text-center">
+            <h6>Please enter the one time password <br> to verify your account</h6>
+            <h6>A code has been sent to</h6> <h6> {{request.session.cemail}} </h6> 
+            
+    <form method="post" action="{% url 'verify_otp' %}">
+        {% csrf_token %}
+        
+        <input type="text" id="otp" name="otp" required>
+        <button type="submit">Verify</button>
+    </form>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    </body>
+    </div>
+</body>
+</html>
+{% include 'footer.html' %}

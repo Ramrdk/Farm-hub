@@ -31,6 +31,13 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587  # or 465 for SSL
+EMAIL_USE_TLS = True  # or EMAIL_USE_SSL = True for SSL
+EMAIL_HOST_USER = 'reghuramandkartha@gmail.com'
+EMAIL_HOST_PASSWORD = 'qurm oefq ugwe xecy  '
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'farming',
+    'farming.templatetags',
 ]
 
 MIDDLEWARE = [
@@ -78,17 +86,16 @@ WSGI_APPLICATION = 'farming.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME':'smart',
-        'HOST': 'localhost',
-        'USER': 'root',
-        'PASSWORD': 'raman@123',
-        'PORT': '3306',
-        'OPTIONS':{
-            'init_command':"SET sql_mode='STRICT_TRANS_TABLES'",
-
-        }
-
+        'ENGINE': 'mssql',
+        'NAME': 'farming',
+        'USER': '',  # Leave blank for Windows Authentication
+        'PASSWORD': '',  # Leave blank for Windows Authentication
+        'HOST': 'INBLRWHFGFFZTX3\DEV',
+        'PORT': '',  # Default port is 1433, leave blank if using default
+        'OPTIONS': {
+            'driver': 'ODBC Driver 17 for SQL Server',
+            'extra_params': 'TrustServerCertificate=yes;Integrated Security=true;',
+        },
     }
 }
 

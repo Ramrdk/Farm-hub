@@ -1,82 +1,111 @@
-{% load static %}
-{% block content %}
 {% include 'header.html' %} 
-<!DOCTYPE html>
-
+<!DOCTYPE html> 
 <html lang="en">
-    <!-- ##### Header Area End ##### -->
-
-    <!-- ##### Breadcrumb Area Start ##### -->
-    <div class="breadcrumb-area">
-        <!-- Top Breadcrumb Area -->
-        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url({% static 'img/bg-img/24.jpg '%});">
-            <h2>Profile</h2>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav aria-label="breadcrumb">
-                       <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fa fa-home"></i> Home</a></li>
- <li class="breadcrumb-item"><a href="{% url 'logout' %}"><i class="fa fa-unlock"></i> Logout</a></li>                            <li class="breadcrumb-item active" aria-current="page">Shop</li>
-                        </ol>
-                    </nav>
-                </div>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Profile</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   </head>
+   <body>
+      <div class="container mt-5">
+         {% if profile_type == 'worker' %} 
+         <div class="card">
+            <div class="card-header bg-primary text-white">
+               <h2 class="card-title">Worker Profile</h2>
             </div>
-        </div>
-    </div>
-    
-    <!-- ##### Testimonial Area Start ##### -->
-    <section class="testimonial-area section-padding-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="testimonials-slides owl-carousel">
-
-                        <!-- Single Testimonial Slide -->
-
-                        <!-- Single Testimonial Slide -->
-                        
-
-                        <!-- Single Testimonial Slide -->
-                        <div class="single-testimonial-slide">
-                            <div class="row align-items-center">
-                               
-                                <div class="col-12 col-md-6">
-                                    <div class="testimonial-content">
-                                        <!-- Section Heading -->
-                                        <div class="section-heading">
-                                            <h2>PROFILE</h2>
-                                           <table>
-
-										   <tr><td> <p><b>Name </td><td>: </b></td><td>{{result.name}}</p></td></tr>
-											<tr><td><p><b>Address </td><td>:</b></td><td> {{result.address}}</p></td></tr>
-											<tr><td><p><b>Experience</td><td> :</b> </td><td> {{result.experience}}</p></td></tr>
-											<tr><td><p><b>Designation</td><td> :</b> </td><td> {{result.designation}}</p></td></tr>
-											<tr><td><p><b>Password </td><td>:</b></td><td>  {{result.password}}</p></td></tr>
-											<tr><td><p><b>Phone </td><td>:</b> </td><td> {{result.phone}}</p></td></tr>
-											
-											</table>
-			            <a href="{% url 'updateworkerprofile' id=result.id %}" class="btn btn-success">update</a>
-                                        </div>
-                                         
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+            <div class="card-body">
+               <table class="table table-bordered">
+                  <tbody>
+                     <tr>
+                        <th>Name</th>
+                        <td>{{ result.name }}</td>
+                     </tr>
+                     <tr>
+                        <th>Address</th>
+                        <td>{{ result.address }}</td>
+                     </tr>
+                     <tr>
+                        <th>Experience</th>
+                        <td>{{ result.experience }}</td>
+                     </tr>
+                     <tr>
+                        <th>Designation</th>
+                        <td>{{ result.designation }}</td>
+                     </tr>
+                     <tr>
+                        <th>Email</th>
+                        <td>{{ result.email }}</td>
+                     </tr>
+                     <tr>
+                        <th>Phone</th>
+                        <td>{{ result.phone }}</td>
+                     </tr>
+                  </tbody>
+               </table>
             </div>
-        </div>
-    </section>
-    <!-- ##### Testimonial Area End ##### -->
-
-    
-
-	{% include 'footer.html' %}
-</body>
-
+         </div>
+         {% elif profile_type == 'customer' %} 
+         <div class="card">
+            <div class="card-header bg-success text-white">
+               <h2 class="card-title">Customer Profile</h2>
+            </div>
+            <div class="card-body">
+               <table class="table table-bordered">
+                  <tbody>
+                     <tr>
+                        <th>Name</th>
+                        <td>{{ result.name }}</td>
+                     </tr>
+                     <tr>
+                        <th>Address</th>
+                        <td>{{ result.address }}</td>
+                     </tr>
+                     <tr>
+                        <th>Email</th>
+                        <td>{{ result.email }}</td>
+                     </tr>
+                     <tr>
+                        <th>Phone</th>
+                        <td>{{ result.phone }}</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         {% elif profile_type == 'seller' %} 
+         <div class="card">
+            <div class="card-header bg-info text-white">
+               <h2 class="card-title">Seller Profile</h2>
+            </div>
+            <div class="card-body">
+               <table class="table table-bordered">
+                  <tbody>
+                     <tr>
+                        <th>Name</th>
+                        <td>{{ result.name }}</td>
+                     </tr>
+                     <tr>
+                        <th>Address</th>
+                        <td>{{ result.address }}</td>
+                     </tr>
+                     <tr>
+                        <th>Email</th>
+                        <td>{{ result.email }}</td>
+                     </tr>
+                     <tr>
+                        <th>Phone</th>
+                        <td>{{ result.phone }}</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         {% else %} 
+         <div class="alert alert-warning" role="alert"> No profile data available. </div>
+         {% endif %} <a href="{% url 'updateworkerprofile' id=result.id %}" class="btn btn-primary mt-3">Update Profile</a> 
+      </div>
+      <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script> <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  -->
+   </body>
 </html>
-{% endblock %}
+{% include 'footer.html' %}

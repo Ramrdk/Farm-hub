@@ -3,6 +3,85 @@
 {% include 'header.html' %} 
 <!DOCTYPE html>
 <html lang="en">
+    <!-- Custom Script to handle cart functionality -->
+<script>
+    // Function to add product to cart
+    function addToCart(productId) {
+        fetch(/add_to_cart/${productId}/, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({ product_id: productId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = '/cart/';
+            } else {
+                alert('Error adding item to cart.');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    // Example function to bind to purchase button (add your specific button selectors)
+    function bindPurchaseButtons() {
+        document.querySelectorAll('.purchase-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = parseInt(this.getAttribute('data-product-id'));
+                addToCart(productId);
+            });
+        });
+    }
+
+    // Initialize cart display and bind buttons
+    document.addEventListener('DOMContentLoaded', function() {
+        bindPurchaseButtons();
+    });
+</script>
+
+
+<!-- Custom Script to handle cart functionality -->
+<script>
+    // Function to add product to cart
+    function addToCart(productId) {
+        fetch(/add_to_cart/${productId}/, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({ product_id: productId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = '/cart/';
+            } else {
+                alert('Error adding item to cart.');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    // Example function to bind to purchase button (add your specific button selectors)
+    function bindPurchaseButtons() {
+        document.querySelectorAll('.purchase-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = parseInt(this.getAttribute('data-product-id'));
+                addToCart(productId);
+            });
+        });
+    }
+
+    // Initialize cart display and bind buttons
+    document.addEventListener('DOMContentLoaded', function() {
+        bindPurchaseButtons();
+    });
+</script>
+
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcrumb Area Start ##### -->
@@ -211,10 +290,10 @@
 						
 						
 						
-						   <div class="col-12 col-sm-6 col-lg-4" >
-                                <div class="single-product-area mb-50">
+						   <div class="col-md-3 mb-4" >
+                                <div class="single-product-area">
                                     <!-- Product Image -->
-                                    <div class="">
+                                    <div class="product-img">
                                         <img src="../media/{{i.image}}">
                                         <!-- Product Tag -->
                                        
@@ -225,7 +304,7 @@
                                         </div>
                                     </div>
                                     <!-- Product Info -->
-                                    <div class="product-info mt-15 text-center">
+                                    <div class="product-info">
                                             <p>{{i.name}}</p>
                                         <h6>{{i.prize}}</h6>
                                     </div>

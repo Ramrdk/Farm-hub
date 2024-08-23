@@ -1,94 +1,132 @@
 {% load static %}
 {% block content %}
-{% include 'header.html' %} 
+{% include 'header.html' %}
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
         <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url({% static 'img/bg-img/24.jpg' %});">
-            <h2> Product Add</h2>
+            <h2>Add Product</h2>
         </div>
 
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                   
+                    <!-- Breadcrumb Navigation (if needed) -->
                 </div>
             </div>
         </div>
     </div>
     <!-- ##### Breadcrumb Area End ##### -->
 
-
-    <!-- ##### Contact Area Start ##### -->
-    <section class="contact-area">
+    <!-- ##### Product Add Area Start ##### -->
+    <section class="product-add-area py-5">
         <div class="container">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-12 col-lg-5">
-                    <!-- Section Heading -->
-                    <div class="section-heading">
-                      
+            <div class="row">
+                <div class="col-12 col-lg-8 mx-auto">
+                    <div class="section-heading mb-4">
+                        <h3 class="text-center">Add New Product</h3>
                     </div>
-                    <!-- Contact Form Area -->
-                    <div class="contact-form-area mb-100">
-						
-					
+                    
+                    <div class="contact-form-area">
                         <form action="insertproduct" method="post" enctype="multipart/form-data">
-						{% csrf_token %}
-						{{ form.as_p }}
+                            {% csrf_token %}
                             <div class="row">
-							
-                                <div class="col-12 col-md-6">
+                                <!-- Product Name -->
+                                <div class="col-12 col-md-6 mb-3">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="Productname" required name="name" placeholder="Productname">
+                                        <input type="text" class="form-control" id="Productname" name="name" placeholder="Product Name" required>
                                     </div>
                                 </div>
-                               
-                               <div class="col-12">
+
+                                <!-- Category -->
+                                <div class="col-12 col-md-6 mb-3">
                                     <div class="form-group">
-                                        <textarea class="form-control"  id="Description" cols="30" required rows="10" name="description" placeholder="Description"></textarea>
+                    
+                                            
+                                            <select class="form-control" id="Category" name="Category" placeholder="Category" required>
+                                                <option value="1">Seeds</option>
+                                                <option value="2">Irrigation Systems</option>
+                                                <option value="3">Pesticides</option>
+                                                <option value="4">Tools & Accessories</option>
+                                                <option value="5">Crop Nutrition</option>
+                                            </select>
+                                        
                                     </div>
                                 </div>
-							   <div class="col-12 col-md-6">
+
+                                <!-- Subcategory -->
+                                <div class="col-12 col-md-6 mb-3">
                                     <div class="form-group">
-                                        <input type="file" class="form-control" id="productimage" required name="myfile" placeholder="productimage">
+                                        <select class="form-control" id="Subcategory" name="Subcategory" placeholder="Subcategory" required>
+                                            <option value="1">Organic Seeds</option>
+                                            <option value="2">Hybrid Seeds</option>
+                                            <option value="3">Drip Irrigation</option>
+                                            <option value="4">Sprinkler Systems</option>
+                                            <option value="5">Herbicide</option>
+                                            <option value="6">Insecticides</option>
+                                            <option value="7">Garden Tools</option>
+                                            <option value="8">Accessories</option>
+                                            <option value="9">Fertilizers</option>
+                                            <option value="10">Soil Amendments</option>
+                                            <option value="11">Tractors</option>
+                                            <option value="12">Harvesters</option>
+                                            <option value="13">Crop Nutrition</option>
+
+                                        </select>
                                     </div>
                                 </div>
-                               
-							   <div class="col-12 col-md-6">
+
+                                <!-- Description -->
+                                <div class="col-12 mb-3">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="Quantity" required name="quantity" placeholder="Quantity">
+                                        <textarea class="form-control" id="Description" name="description" cols="30" rows="4" placeholder="Description" required></textarea>
                                     </div>
                                 </div>
-                            
-							   <div class="col-12 col-md-6">
+<!-- Product Image -->
+                                <div class="col-12 col-md-6 mb-3">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="prize" required name="prize" placeholder="prize">
+                                        <input type="file" class="form-control" id="productimage" name="myfile" required>
                                     </div>
                                 </div>
-								
-								 <div class="col-12 col-md-6">
+
+                                <!-- Quantity -->
+                                <div class="col-12 col-md-6 mb-3">
                                     <div class="form-group">
-                                        <input type="hidden" class="form-control" required value="{{res}}" name="usertype" placeholder="prize">
+                                        <input type="text" class="form-control" id="Quantity" name="quantity" placeholder="Quantity" required>
                                     </div>
                                 </div>
+
+                                <!-- Price -->
+                                <div class="col-12 col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="prize" name="prize" placeholder="Price" required>
+                                    </div>
+                                </div>
+
+                                <!-- Product ID -->
+                                <div class="col-12 col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="product_id" name="product_id" placeholder="Product ID" required>
+                                    </div>
+                                </div>
+
+                                <!-- Hidden Field for User Type -->
+                                <div class="col-12 mb-3">
+                                    <input type="hidden" class="form-control" name="usertype" value="{{res}}">
+                                </div>
+
+                                <!-- Submit Button -->
                                 <div class="col-12">
-                                    <button type="submit" name="submit" class="btn alazea-btn mt-15">Submit</button>
+                                    <button type="submit" name="submit" class="btn btn-success btn-block">Submit</button>
                                 </div>
                             </div>
                         </form>
-						
-						
                     </div>
                 </div>
-
-                
             </div>
         </div>
     </section>
-    <!-- ##### Contact Area End ##### -->
+    <!-- ##### Product Add Area End ##### -->
 
-   {% include 'footer.html' %}
-</body>
-
-</html>
+    {% include 'footer.html' %}
 {% endblock %}

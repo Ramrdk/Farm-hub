@@ -1,75 +1,165 @@
 {% load static %}
 {% block content %}
+<body></body>
 <head>
+  
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-    <!-- Title -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    
+    <!-- Font Awesome -->
+<link
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.min.css"
+rel="stylesheet"
+/>
     <title>Alazea - Gardening &amp; Landscaping HTML Template</title>
-
     <!-- Favicon -->
     <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}">
-
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
-
+    <script src="{% static 'js/scripts.js' %}"></script>
 </head>
+
 
 <body>
 
-    <!-- Preloader -->
-   
+  
+    
+    
+   {% if messages %}
+    {% for message in messages %}
+          <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            <strong>{{message}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          {% endfor %}
+        {% endif %}
 
-    <!-- ##### Header Area Start ##### -->
-    <header class="whb-header whb-sticky-shadow whb-scroll-slide whb-sticky-clone whb-hide-on-scroll">
 
-        <!-- ##### Track Order and Login Area Start ##### -->
-    <div class="top-bar d-flex justify-content-end align-items-center">
-        <div class="track-order">
-            <form action="/track-order" method="POST" class="track-order-box">
-                <!-- added by Gopal-->
-        
- {% csrf_token %}
-                <input type="text" name="order_id" placeholder="Enter Order ID">
-                <button type="submit" class="btn alazea-btn">Track Order</button>
-            </form>
-        </div>
-        <div class="cart-login"> <a href="#" class="btn alazea-btn">Cart</a> <a href="#" class="btn alazea-btn">Missed Call To Order: 1800-3000-2434</a> </div>
+        <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+      <!-- Navbar brand -->
+      <a class="navbar-brand" href="#">Farm@HUB</a>
+  
+      <!-- Toggle button -->
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+        data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <i class="fas fa-bars text-light"></i>
+      </button>
+  
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto d-flex flex-row mt-3 mt-lg-0">
+          <li class="nav-item text-center mx-2 mx-lg-1">
+            <a class="nav-link active" aria-current="page" href="{% url 'first' %}">
+              <div>
+                <i class="fas fa-house"></i>
+                
+              </div>
+              Home
+            </a>
+          </li>
+          <li class="nav-item text-center mx-2 mx-lg-1">
+            <a class="nav-link" href="{% url 'homes' %}">
+              <div>
+                <i class="fas fa-arrow-trend-up"></i>
+               
+              </div>
+              Dashboard
+            </a>
+          </li>
+          
+          <li class="nav-item text-center mx-2 mx-lg-1">
+            <a class="nav-link" href='workerprofile'>
+              <div>
+                <i class="fas fa-circle-user"></i>
+           
+              </div>
+              Profile
+            </a>
+          </li>
+            <!-- Dropdown menu -->
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <!-- Left links -->
+  
+        <!-- Right links -->
+        <ul class="navbar-nav ms-auto d-flex flex-row mt-3 mt-lg-0">
+          <li class="nav-item text-center mx-2 mx-lg-1">
+            <a class="nav-link" href="/cart">
+              <div>
+                <i class="fas fa-shopping-cart"></i>
+                <!-- <span class="badge rounded-pill badge-notification bg-info">11</span> -->
+              </div>
+             
+             Cart
+            </a>
+          </li>
+          <li class="nav-item text-center mx-2 mx-lg-1">
+            <a class="nav-link" href="{% url 'viewworkernews' %}">
+              
+              <div>
+                <i class="fas fa-globe-americas fa-lg mb-1"></i>
+                <span class="badge rounded-pill badge-notification bg-success">11</span>
+              </div>
+              News
+            </a>
+          </li>
+        </ul>
+        <!-- Right links -->
+  
+        <!-- Search form -->
+       
+                <form action="/track-order" method="POST" class="d-flex input-group w-auto ms-lg-3 my-3 my-lg-0" >
+                    <!-- Security -->
+            
+     {% csrf_token %}
+     <input type="text" name="order_id" placeholder="Enter Order ID" id="track_order_textbox">
+     <button type="button" class="btn alazea-btn" id="track_order_button" onclick="check_id()">Track Order</button>
+                </form>
+       
+      <!-- Collapsible wrapper -->
     </div>
-    <!-- ##### Track Order and Login Area End ##### -->
-
-        <!-- ***** Top Header Area ***** -->
-        <div class="top-header-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="top-header-content d-flex align-items-center justify-content-between">
-                            <!-- Top Header Content -->
-                           
-
-                            <!-- Top Header Content -->
-                            <div class="top-header-meta d-flex">
-                                <!-- Language Dropdown -->
-                                
-                                <!-- Login -->
-                                
-                                <!-- Cart -->
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Container wrapper -->
+  </nav>
+  
+  
+     
+    
+   
 
         <!-- ***** Navbar Area ***** -->
         
-        
-        <div class="alazea-main-menu">
-            <div class="classy-nav-container breakpoint-off">
+     
+       <!-- <div class="alazea-main-menu" > -->
+           <!-- <div class="classy-nav-container breakpoint-off"> -->
                 <div class="container">
                     <!-- Menu -->
                     <nav class="classy-navbar justify-content-between" id="alazeaNav">
@@ -78,12 +168,12 @@
                         <a href="index.html" class="nav-brand"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
 
                         <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
+                        <div class="classy-navbar-toggler" >
                             <span class="navbarToggler"><span></span><span></span><span></span></span>
                         </div>
 
                         <!-- Menu -->
-                        <div class="classy-menu">
+                        <div class="classy-menu" >
 
                             <!-- Close Button -->
                             <div class="classycloseIcon">
@@ -99,52 +189,48 @@
 									    
 												
 									{% if request.session.cid %}
-									
-											                     <li><a href="{% url 'products' %}">Product</a>
+                                    <li><strong>Welcome, {{request.session.cname}}</strong></li>
+                                    
+                                        
+                                     
+                                   
+                                  
+											                     <li><a href="{% url 'product_catalog' %}">Product</a>
+                                                                    
                            
-										
+                                                                    
                                								<li><a href="{% url 'logout' %}">LogOut</a>
+                                                                
 
 											
 											{% elif request.session.admin %}
+                      <li><strong>Welcome, {{request.session.admin}}</strong></li>
 												                                              
-										<li><a href="{% url 'addcategory' %}">Add Category</a>
-                               			<li><a href="{% url 'addnews' %}">Add News</a>
+										
 										
                                		
-										<li><a href="#">Add</a>
-										<ul class="dropdown">
-                                            <li><a href="{% url 'adminproduct' %}">Add Product</a></li>
-                                            <li><a href="{% url 'adminmachinery'%}">Add Machinery</a></li>
-                                             
-                                                </ul>  
+										
 
-										<li><a href="#">View Details</a>
-									 
-													<ul class="dropdown">
-                                            <li><a href="{% url 'viewworkers' %}">View Workers</a></li>
-                                            <li><a href="{% url 'viewfarmers' %}">View Sellers</a></li>
-                                             <li><a href="{% url 'viewcustomers' %}">View Customers</a></li>
-										  <li><a href="{% url 'pay' %}">View Purchase</a></li>
-
-                                                </ul>  
+											
                                			<li><a href="{% url 'logout' %}">LogOut</a>
 										
 										
 						{% elif request.session.sid %}
 
 										
-										 <li><a href="{% url 'homes' %}">Home</a>
-
+										
+                                            <li><strong>Welcome, {{request.session.sname}}</strong></li>
+                                      
 										
                                			<li><a href="{% url 'logout' %}">LogOut</a>
 										
 										
 														
 						{% elif request.session.wid %}
-
+                        
+            <li><strong>Welcome, {{request.session.wname}}</strong></li>                  
 										
-										 <li><a href="{% url 'homess' %}">Home</a>
+										
 
 										
                                			<li><a href="{% url 'logout' %}">LogOut</a>
@@ -159,7 +245,7 @@
 										
 
 											{% else %}
-											         <li><a href="{% url 'homes' %}">Home</a></li>
+											     
 
 											<li><a href="#">Register</a>
                                         <ul class="dropdown">
@@ -194,9 +280,9 @@
                                 </ul>
 
                                 <!-- Search Icon -->
-                                <div id="searchIcon">
+                                <!-- <div id="searchIcon">
                                     <i class="fa fa-search" aria-hidden="true"></i>
-                                </div>
+                                </div> -->
 
                             </div>
                             <!-- Navbar End -->
@@ -204,51 +290,21 @@
                     </nav>
 
                     <!-- Search Form -->
-                    <div class="search-form">
+                    <!-- <div class="search-form">
                         <form action="#" method="get">
                             <input type="search" name="search" id="search" placeholder="Type keywords &amp; press enter...">
                             <button type="submit" class="d-none"></button>
-                        </form>
+                        </form> -->
                         <!-- Close Icon -->
-                        <div class="closeIcon"><i class="fa fa-times" aria-hidden="true"></i></div>
-                    </div>
+                        <!-- <div class="closeIcon"><i class="fa fa-times" aria-hidden="true"></i></div>
+                    </div> -->
                 </div>
-            </div>
-        </div>
+           <!-- </div>-->
+       <!-- </div>-->
 
 
         <!-- ##### Product Categories Navigation Start ##### -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light"> <a class="navbar-brand" href="#">Categories</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="seedsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                         Seeds                     </a>
-                    <div class="dropdown-menu" aria-labelledby="seedsDropdown">
-                    <a class="dropdown-item" href="#">Organic Seeds</a> <a class="dropdown-item" href="#">Hybrid Seeds</a> </div>
-                </li>
-                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="nutritionDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                         Crop Nutrition                     </a>
-                    <div class="dropdown-menu"
-                    aria-labelledby="nutritionDropdown"> <a class="dropdown-item" href="#">Fertilizers</a> <a class="dropdown-item" href="#">Soil Amendments</a> </div>
-                </li>
-                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="equipmentDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                         Farming Equipment                     </a>
-                    <div class="dropdown-menu"
-                    aria-labelledby="equipmentDropdown"> <a class="dropdown-item" href="#">Tractors</a> <a class="dropdown-item" href="#">Harvesters</a> </div>
-                </li>
-                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="irrigationDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                         Irrigation Systems                     </a>
-                    <div class="dropdown-menu"
-                    aria-labelledby="irrigationDropdown"> <a class="dropdown-item" href="#">Drip Irrigation</a> <a class="dropdown-item" href="#">Sprinkler Systems</a> </div>
-                </li>
-                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="pesticidesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                         Pesticides                     </a>
-                    <div class="dropdown-menu"
-                    aria-labelledby="pesticidesDropdown"> <a class="dropdown-item" href="#">Herbicides</a> <a class="dropdown-item" href="#">Insecticides</a> </div>
-                </li>
-                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="toolsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                         Tools & Accessories                     </a>
-                    <div class="dropdown-menu"
-                    aria-labelledby="toolsDropdown"> <a class="dropdown-item" href="#">Garden Tools</a> <a class="dropdown-item" href="#">Accessories</a> </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light"> <a class="navbar-brand" href="#">Categories</a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> <div class="collapse navbar-collapse" id="navbarNav"> <ul class="navbar-nav"> <!-- Seeds Dropdown --> <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="seedsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Seeds </a> <div class="dropdown-menu" aria-labelledby="seedsDropdown"> <a class="dropdown-item" href="{% url 'product_catalog' %}?category=Seeds&subcategory=Organic%20Seeds">Organic Seeds</a> <a class="dropdown-item" href="{% url 'product_catalog' %}?category=Seeds&subcategory=Hybrid%20Seeds">Hybrid Seeds</a> </div> </li> <!-- Crop Nutrition Dropdown --> <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="nutritionDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Crop Nutrition </a> <div class="dropdown-menu" aria-labelledby="nutritionDropdown"> <a class="dropdown-item" href="{% url 'product_catalog' %}?category=Crop%20Nutrition&subcategory=Fertilizers">Fertilizers</a> <a class="dropdown-item" href="{% url 'product_catalog' %}?category=Crop%20Nutrition&subcategory=Soil%20Amendments">Soil Amendments</a> </div> </li> <!-- Farming Equipment Dropdown --> <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="equipmentDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Farming Equipment </a> <div class="dropdown-menu" aria-labelledby="equipmentDropdown"> <a class="dropdown-item" href="{% url 'product_catalog' %}?category=Farming%20Equipment&subcategory=Tractors">Tractors</a> <a class="dropdown-item" href="{% url 'product_catalog' %}?category=Farming%20Equipment&subcategory=Harvesters">Harvesters</a> </div> </li> <!-- Irrigation Systems Dropdown --> <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="irrigationDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Irrigation Systems </a> <div class="dropdown-menu" aria-labelledby="irrigationDropdown"> <a class="dropdown-item" href="{% url 'product_catalog' %}?category=Irrigation%20Systems&subcategory=Drip%20Irrigation">Drip Irrigation</a> <a class="dropdown-item" href="{% url 'product_catalog' %}?category=Irrigation%20Systems&subcategory=Sprinkler%20Systems">Sprinkler Systems</a> </div> </li> <!-- Pesticides Dropdown --> <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="pesticidesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Pesticides </a> <div class="dropdown-menu" aria-labelledby="pesticidesDropdown"> <a class="dropdown-item" href="{% url 'product_catalog' %}?category=Pesticides&subcategory=Herbicides">Herbicides</a> <a class="dropdown-item" href="{% url 'product_catalog' %}?category=Pesticides&subcategory=Insecticides">Insecticides</a> </div> </li> <!-- Tools & Accessories Dropdown --> <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="toolsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Tools & Accessories </a> <div class="dropdown-menu" aria-labelledby="toolsDropdown"> <a class="dropdown-item" href="{% url 'product_catalog' %}?category=Tools%20%26%20Accessories&subcategory=Garden%20Tools">Garden Tools</a> <a class="dropdown-item" href="{% url 'product_catalog' %}?category=Tools%20%26%20Accessories&subcategory=Accessories">Accessories</a> </div> </li> </ul> </div> </nav>
     </header>
 
     

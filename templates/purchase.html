@@ -1,158 +1,94 @@
-{% load static %}
-{% block content %}
-{% include 'header.html' %} 
-    <!-- ##### Breadcrumb Area Start ##### -->
-    <div class="breadcrumb-area">
-        <!-- Top Breadcrumb Area -->
-        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url({% static 'img/bg-img/24.jpg' %});">
-            <h2> Purchase</h2>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                   
+{% load static %} {% block content %} {% include 'header.html' %}
+<!-- ##### Breadcrumb Area Start ##### -->
+<div class="breadcrumb-area">
+    <!-- Top Breadcrumb Area -->
+    <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"><h2>Purchase</h2></div>
+    <div class="container">
+        <div class="row"><div class="col-12"></div></div>
+    </div>
+</div>
+<!-- ##### Breadcrumb Area End ##### -->
+<!-- ##### Payment Area Start ##### -->
+<section class="payment-area py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-8 mx-auto">
+                <!-- Section Heading -->
+                <div class="section-heading mb-4 text-center"><h3>Payment Information</h3></div>
+                <!-- Payment Form Area -->
+                <div class="payment-form-area">
+                    <form action="{% url 'purchase' %}" method="POST">
+                        {% csrf_token %}
+                        <h4 class="text-danger">{{status}}</h4>
+                        
+                            <div class="form-group col-md-6">
+                                <!-- <label for="productid">Product ID</label> <input type="hidden" id="productid" required class="form-control" value="{{res.id}}" name="productid" /> -->
+                                <!-- <input type="text" class="form-control" value="{{res.name}}" readonly name="name" /> -->
+                            </div>
+                            <!-- <div class="form-group col-md-6"><label for="orderid">Order ID</label> <input type="hidden" id="orderid" class="form-control" value="{{order_id}}" name="order_id" /></div> -->
+                        </div>
+                        <div class="form-row">
+                            <!-- <div class="form-group col-md-6"><label for="prize">Price</label> <input type="text" id="prize" class="form-control" required value="{{res.prize}}" readonly name="prize" /></div> -->
+                            <div class="form-group col-md-6"><label for="cardname">Card Name</label> <input type="text" id="cardname" class="form-control" name="cardname" required placeholder="Enter Card Name" /></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6"><label for="cardnumber">Card Number</label> <input type="text" id="cardnumber" class="form-control" name="cardnumber" required placeholder="Enter Card Number" /></div>
+                            <div class="form-group col-md-6">
+                                <label for="cardtype">Card Type</label>
+                                <select id="cardtype" class="form-control" name="cardtype" required>
+                                    <option value="">--Select--</option>
+                                    <option value="Debit">Debit</option>
+                                    <option value="Credit">Credit</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="cardyear">Card Year</label>
+                                <select id="cardyear" class="form-control" name="cardyear" required>
+                                    <option value="">--Select--</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2026">2026</option>
+                                    <option value="2027">2027</option>
+                                    <option value="2028">2028</option>
+                                    <option value="2029">2029</option>
+                                    <option value="2030">2030</option>
+                                    <option value="2031">2031</option>
+                                    <option value="2032">2032</option>
+                                    <option value="2033">2033</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="cardmonth">Card Month</label>
+                                <select id="cardmonth" class="form-control" name="cardmonth" required>
+                                    <option value="">--Select--</option>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4"><label for="cvv">CVV</label> <input type="text" id="cvv" class="form-control" name="cvv" required placeholder="Enter CVV" /></div>
+                        </div>
+                        <div class="form-group"><label for="date">Expiry Date</label> <input type="date" id="date" class="form-control" name="date" /></div>
+                        <input type="hidden" class="form-control" value="{{res1}}" name="cid" /> <input type="hidden" class="form-control" value="pay" name="status" />
+                        <button type="submit" name="submit" class="btn btn-primary mt-3">Pay</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- ##### Breadcrumb Area End ##### -->
-
-
-    <!-- ##### Contact Area Start ##### -->
-    <section class="contact-area">
-        <div class="container">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-12 col-lg-5">
-                    <!-- Section Heading -->
-                    <div class="section-heading">
-                      
-                    </div>
-                    <!-- Contact Form Area -->
-                    <div class="contact-form-area mb-100">
-						
-					
-                        <form action="addpayment" method="POST" >
-						{% csrf_token %}
-				
-				<h2 style="color:red;" >{{status}}</h2>
-                            <div class="row">
-							
-                                <div class="col-12 col-md-6">
-                                    <div class="form-group">
-                                        <input type="hidden" required class="form-control" value="{{res.id}}" readonly name="productid" placeholder="Your Name">
-                                                                            <input type="text" required class="form-control" value="{{res.name}}" readonly name="name" placeholder="Your Name">
-
-									</div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" value="" required  name="quantity" placeholder="Quantity">
-                                    </div>
-                                </div>
-                            
-							  
-                               
-							   <div class="col-12 col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" required value="{{res.prize}}" readonly name="prize" placeholder="Your phonenumber">
-                                    </div>
-                                </div>
-								
-								   <div class="col-12 col-md-6">
-                                    <div class="form-group">
-                    <input class="form-control" name="cardname"  required  required placeholder="Enter Card Name" type="text">                                                    </div>
-                                </div>
-								
-								   <div class="col-12 col-md-6">
-                                    <div class="form-group">
-                    <input class="form-control" name="cardnumber"  required    placeholder="Enter Card Number" type="text">                                                    </div>
-                                </div>
-								
-								   <div class="col-12 col-md-6">
-                                    <div class="form-group">Card Type
-<select class="form-control" name="cardtype"  required   placeholder="Enter Card Number">
-									<option>--Select--<br></option>
-									<option value="Debit">Debit</option>
-									<option value="Credit">Credit</option>
-									
-
-								</select>                
-                                    </div>
-                                </div>
-								   <div class="col-12 col-md-6">
-                                    <div class="form-group"> Card Year
-<select class="form-control" name="cardyear"  required   placeholder="Enter Card Number">
-									<option>--Select--<br></option>
-									<option value="2022">2022</option>
-									<option value="2023">2023</option>
-								 	<option value="2024">2024</option>
-									<option value="2025">2025</option>
-
-								</select>                
-                                    </div>
-                                </div>
-								   <div class="col-12 col-md-6">
-                                    <div class="form-group">Card Month
-<select class="form-control" name="cardmonth"  required   placeholder="Enter Card Number">
-									<option>--Select--<br></option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8">8</option>
-									<option value="9">9</option>
-									<option value="11">11</option>
-									<option value="12">12</option>
-
-
-
-								</select>                
-                                    </div>
-                                </div>
-								   <div class="col-12 col-md-6">
-                                    <div class="form-group">
-									<input class="form-control" name="cvv"  required   placeholder="Enter CVV" type="text">                                    </div>
-                                </div>
-								<div class="col-12 col-md-6">
-                                    <div class="form-group">
-                                        <input type="date" class="form-control" name="date" placeholder="Your phonenumber">
-                                    </div>
-								
-								   <div class="col-12 col-md-6">
-                                    <div class="form-group">
-                                        <input type="hidden" class="form-control" value="{{res1}}"  name="cid" placeholder="Your phonenumber">
-                                    </div>
-									
-									
-                               
-								 <div class="col-12 col-md-6">
-                                    <div class="form-group">
-                                        <input type="hidden" class="form-control" value="pay"  name="status" placeholder="Your phonenumber">
-                                    </div>
-                                
-                            
-                                <div class="col-12">
-                                    <button type="submit" name="submit" class="btn alazea-btn mt-15">Pay</button>
-                                </div>
-                            </div>
-                        </form>
-						
-                    </div>
-                </div>
-
-                
-            </div>
-			
-        </div>
-    </section>
-    <!-- ##### Contact Area End ##### -->
-
-   {% include 'footer.html' %}
-</body>
-
-</html>
-{% endblock %}
+</section>
+<!-- ##### Payment Area End ##### -->
+{% include 'footer.html' %} {% endblock %}

@@ -1,124 +1,161 @@
-{% load static %} {% block content %} {% include 'header.html' %}
-<!DOCTYPE html>
+{% load static %} {% block content %} {% include 'header.html' %} <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farming Products and Equipment</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"> </head>
-
-<body>
-    <!-- ##### Header Area End ##### -->
-    
-    
-    <!-- ##### Product Categories Navigation End ##### -->
-    <!-- ##### Banner Area Start ##### -->
-    <div class="banner-area section-padding-100-0 bg-img" style="background-image: url({% static 'img/bg-img/banner.png' %});">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <div class="banner-content text-center">
-                        <h2>Welcome to Our Farming Products Store</h2>
-                        <p>Your one-stop shop for quality farming products and equipment.</p>
-                    </div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Farming Products and Equipment</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+            .banner-area {
+                padding: 100px 0;
+                background-image: url("{% static 'img/bg-img/banner.png' %}");
+                background-size: cover;
+                background-position: center;
+                text-align: center;
+                color: #fff;
+            }
+            .banner-area h2 {
+                font-size: 48px;
+                margin-bottom: 10px;
+            }
+            .banner-area p {
+                font-size: 18px;
+            }
+            .products-area {
+                padding: 300px 0;
+                background: #f9f9f9;
+            }
+            .section-heading {
+                text-align: center;
+                margin-bottom: 50px;
+            }
+            .section-heading h2 {
+                font-size: 36px;
+                margin-bottom: 10px;
+            }
+            .section-heading p {
+                font-size: 18px;
+                color: #777;
+            }
+            .row {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                
+            .single-product-area {
+                background: #fff;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                transition: transform 0.2s;
+                margin-bottom: 10px;
+                padding: 10px;
+                text-align: center;
+                width: 30%;
+            }
+            .single-product-area:hover {
+                transform: translateY(-10px);
+            }
+            .product-img img {
+                width: 100%;
+                height: 150px;
+                max-height: 200px;
+                object-fit: cover;
+                transition: transform 0.3s;
+                cursor: pointer;
+            }
+            .product-img img:hover {
+                transform: scale(1.1);
+            }
+            .product-info {
+                margin-top: 20px;
+            }
+            .product-info h6 {
+                font-size: 20px;
+                margin-bottom: 10px;
+                height: 50px;
+                overflow: hidden;
+            }
+            .product-info p {
+                font-size: 18px;
+                color: #333;
+                margin-bottom: 20px;
+            }
+            .product-info button {
+                background: #28a745;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                transition: background 0.3s;
+                cursor: pointer;
+            }
+            .product-info button:hover {
+                background: #218838;
+            }
+            @media (max-width: 768px) {
+                .banner-area h2 {
+                    font-size: 32px;
+                }
+                .banner-area p {
+                    font-size: 16px;
+                }
+                .single-product-area {
+                    width: 80%;
+                }
+                .product-img img {
+                    max-height: 150px;
+                }
+                .product-info h6 {
+                    font-size: 18px;
+                }
+                .product-info p {
+                    font-size: 16px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        
+        
+        <!-- Banner Area -->
+        <div class="banner-area">
+            <div class="container">
+                <div class="row">
+                    
+                    
                 </div>
             </div>
         </div>
-    </section>
-    <!-- ##### Banner Area End ##### -->
-    
-    
-    <!-- ##### Products Area Start ##### -->
-    <div class="products-area ">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <!-- Section Heading -->
-                    <div class="section-heading text-center">
-                        <h2>Our Products</h2>
-                        <p>Check out some of our featured products.</p>
-                    </div>
+        
+        <!-- Products Area -->
+        <div class="products-area">
+            <div class="container">
+                <div class="section-heading">
+                   
+                    <h2></h2>
+                    <p>Check out some of our featured products.</p>
                 </div>
-            </div>
-            <div class="row">
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-product-area mb-100">
-                        <div class="product-img"> <img src="{% static 'img/bg-img/prod1.jpg' %}" alt=""> </div>
-                        <div class="product-info text-center">
-                            <a href="#">
-                                <h6>Organic Seeds</h6> </a>
-                            <p>$20.00</p>
+                <div class="row">
+                    {% for product in top_products %}
+                    <div class="single-product-area">
+                        <div class="product-img"><img src="{{ product.image.url }}" alt="{{ product.name }}" /></div>
+                        <div class="product-info ">
+                            <h6>{{ product.name }}</h6>
+                            <p>₹{{ product.prize }}</p>
+                            <form method="post" action="{% url 'add_to_cart' product.product_id %}">{% csrf_token %} <button type="submit" class="btn alazea-btn">Add to Cart</button></form>
                         </div>
                     </div>
-                </div>
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-product-area mb-100">
-                        <div class="product-img"> <img src="{% static 'img/bg-img/prod2.jpg' %}" alt=""> </div>
-                        <div class="product-info text-center">
-                            <a href="#">
-                                <h6>Fertilizer Pack</h6> </a>
-                            <p>$15.00</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-product-area mb-100">
-                        <div class="product-img"> <img src="{% static 'img/bg-img/prod3.jpg' %}" alt=""> </div>
-                        <div class="product-info text-center">
-                            <a href="#">
-                                <h6>Tractor</h6> </a>
-                            <p>$5000.00</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-product-area mb-100">
-                        <div class="product-img"> <img src="{% static 'img/bg-img/prod4.jpg' %}" alt=""> </div>
-                        <div class="product-info text-center">
-                            <a href="#">
-                                <h6>Sprinkler System</h6> </a>
-                            <p>$200.00</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-product-area mb-100">
-                        <div class="product-img"> <img src="{% static 'img/bg-img/prod5.jpg' %}" alt=""> </div>
-                        <div class="product-info text-center">
-                            <a href="#">
-                                <h6>Pesticide Spray</h6> </a>
-                            <p>$25.00</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-product-area mb-100">
-                        <div class="product-img"> <img src="{% static 'img/bg-img/prod6.jpg' %}" alt=""> </div>
-                        <div class="product-info text-center">
-                            <a href="#">
-                                <h6>Garden Tools Set</h6> </a>
-                            <p>$30.00</p>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-    </section>
-    <!-- ##### Products Area End ##### -->
-
-
-    
-    <!-- ##### Footer Area Start ##### -->
-    <footer class="footer-area section-padding-100-0">
-            
-    </footer>
-    <!-- ##### Footer Area End ##### -->{% include 'footer.html' %} </body>
-
-</html> {% endblock %} ```
+        <!-- Footer Area -->
+        <footer class="footer-area section-padding-100-0">{% include 'footer.html' %}</footer>
+    </body>
+</html>
+{% endblock %}

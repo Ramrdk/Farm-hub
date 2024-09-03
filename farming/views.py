@@ -128,7 +128,7 @@ def place_order(request):
             fail_silently=False,            
         )
             print("-----------------upi")
-            qr = qrcode.make(f'http://127.0.0.1:1200/confirm_payment?order_id={order_id}')
+            qr = qrcode.make(f'http://127.0.0.1:200/confirm_payment?order_id={order_id}')
             
             buffer = io.BytesIO()
             qr.save(buffer, 'PNG')
@@ -986,8 +986,10 @@ def category_view(request):
             subcategory = subcategory_form.save(commit=False)
             subcategory.category = category
             subcategory.save()
-
-            return redirect('category_success')  # Redirect to a success page or another view
+            messages.success(request, 'Category added successfully!')
+            return redirect('index.html')
+           
+          # Redirect to a success page or another view
     else:
         category_form = CategoryForm()
         subcategory_form = SubcategoryForm()

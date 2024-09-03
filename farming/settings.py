@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-y(t$rm+()!s1%^j#oc+5@j=rt#skx-h*nyt5ak9zlz6+h1%=^3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app','now.sh','127.0.0.1','localhost']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -86,13 +86,16 @@ WSGI_APPLICATION = 'farming.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',  # Leave blank for Windows Authentication
-        'PASSWORD': 'PyHUJtiPtoCOsZbBtTjuTHnQkAViSmUx',  # Leave blank for Windows Authentication
-        'HOST': 'postgres.railway.internal',
-        'PORT': '5432',  # Default port is 1433, leave blank if using default
-        
+        'ENGINE': 'mssql',
+        'NAME': 'farming',
+        'USER': '',  # Leave blank for Windows Authentication
+        'PASSWORD': '',  # Leave blank for Windows Authentication
+        'HOST': 'INBLRWHFGFFZTX3\DEV',
+        'PORT': '',  # Default port is 1433, leave blank if using default
+        'OPTIONS': {
+            'driver': 'ODBC Driver 17 for SQL Server',
+            'extra_params': 'TrustServerCertificate=yes;Integrated Security=true;',
+        },
     }
 }
 
@@ -157,6 +160,3 @@ MEDIA_ROOT =os.path.join(BASE_DIR,'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')

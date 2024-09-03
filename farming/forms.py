@@ -21,9 +21,9 @@ class CategoryForm(forms.ModelForm):
 class SubcategoryForm(forms.ModelForm):
     class Meta:
         model = Subcategory
-        fields = ['category', 'name']
+        fields = [ 'name']
         widgets = {
-            'category': forms.Select(attrs={'class': 'form-control'}),
+            
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your Product Subcategory'})
         }
 

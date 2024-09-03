@@ -52,7 +52,7 @@
 </tr>
 <tr>
     {% for i in res %}
-        {% if request.session.cid == i.user %}
+        
             <tr>
                 <td>{{ i.order_id }}</td>
                 <td>{{ i.payment_method }}</td>
@@ -60,7 +60,7 @@
                 <td>{{ i.total_amount }}</td>
                 <td>{{ i.created_at }}</td>
             </tr>
-        {% endif %}
+        
     
         </tr>
 
